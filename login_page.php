@@ -9,6 +9,10 @@ include 'conn1.php';
 	<button type="submit" name="submit_upload">Upload</button>
 
 </form>
+<form action="log_out.php" method="post">
+    <button type="submit" name="submit_logout" >Log out</button>
+
+</form>
 <?php 
 $id_login = $_SESSION['login_id'];
 
@@ -17,7 +21,7 @@ $sql = "SELECT * FROM students WHERE first_name ='$first';";
 $result = mysqli_query($conn1, $sql);
 $rows1 = mysqli_fetch_assoc($result);
 $resultCheck = mysqli_num_rows($result);
-$finalImgName = $_SESSION['finalImgName'];
+
 if($resultCheck > 0){
 	$sql1 = "SELECT * FROM profileimg_learning WHERE userid='$first';";
 	$resultImg = mysqli_query($conn1, $sql1);
@@ -39,20 +43,22 @@ if($resultCheck > 0){
   						 if($rows['status'] == 1){
     					    ?><img src="uploads2/default_profile.jpg" class="media-object" style="width:180px">
     											<?php	}elseif($rows['status'] == 0){
-    														echo "<img src='uploads2/".$finalImgName."' class='media-object' style='width:180px'>"; 
+    														echo "<img src='uploads2/".$rows1['profile_image']."' class='media-object' style='width:180px'>"; 
     																					}
     														?>
   						</div>
   							<div class="media-body">
     							<h4 class="media-heading">First Name: <?php echo $_SESSION['login_first_name']."<br>"; ?> Last Name: <?php  echo $rows1['last_name']; ?></h4>
     							<p><form action="login_page.php" method="post">
-    									<input type="text" name="info" placeholder="info">
+    									<textarea name="info" rows="10" cols="40"></textarea><br>
     									<button type="submit" name="submit_info">Submit</button>
     									<br>
     									<?php 
     										if(isset($_POST['info'])){
-    											$info = $_POST['info'];
-    											echo $info;
+    											$info_input = $_POST['info'];
+                                                $_SESSION['info'] = $info_input;
+    											$info = $_SESSION['info'];
+                                                echo $info;
     										}
     									?>
 

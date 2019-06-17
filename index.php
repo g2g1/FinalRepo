@@ -241,7 +241,7 @@ $students = $stmt -> fetchAll();
 			</div>
 			<div class="form-group">
 				<label for="usr">Password:</label>
-				<input type="text" class="form-control" name="password" placeholder="password">
+				<input type="password" class="form-control" name="password" placeholder="password">
 			</div>
 
 

@@ -193,8 +193,23 @@ ALTER TABLE `students`
 --
 ALTER TABLE `students_old`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+/* chemi damatebuli*/
+CREATE TABLE 'profileimg_learning' (
+    `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `userid` varchar(35) NOT NULL,
+  `status` int(11) NOT NULL
+
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;--es ENGINE=InnoDB DEFAULT CHARSET=utf8 ristvisaa ar vici mara radganac maghla gamoiyenet davamate :))
+
+ALTER TABLE `students` ADD `profile_image` VARCHAR(35) NOT NULL AFTER `inserted_at`;
+
+COMMIT;

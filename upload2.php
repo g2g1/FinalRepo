@@ -27,6 +27,8 @@ if(in_array($fileActualExt, $allowed)){
 				move_uploaded_file($fileTmpName, $fileDestination);
 				$sql = "UPDATE profileimg_learning SET status = 0 WHERE userid='$idImg';";
 				mysqli_query($conn1, $sql);
+				$sql2 = "UPDATE students SET profile_image = '$fileNewName' WHERE first_name='$idImg';";
+				mysqli_query($conn1, $sql2);
 				Header("Location: login_page.php?uploadImg=success");
 
 
